@@ -28,4 +28,13 @@ public class UserWordHistory extends BaseEntity {
 
     private Boolean solved;
 
+    public UserParagraphWord toEntity() {
+        return UserParagraphWord.builder()
+                .memberId(1L)
+                .count(1L)
+                .word(word)
+                .averageTime(Double.valueOf(time))
+                .rewindCount(rewindCount)
+                .build();
+    }
 }

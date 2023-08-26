@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -27,13 +26,13 @@ public class QuizService {
     private final UserParagraphWordRepository userParagraphWordRepository;
 
     public AiGetQuizResponse getQuiz(long literacyId, long quizNumber) {
-        if (aiClient.health()) {
-            return new AiGetQuizResponse("가다의 의미로 적절한 것은?", List.of("1. 이동하다",
-                    "2. 오다",
-                    "3. 머물다",
-                    "4. 돌아가다",
-                    "5. 걷다"), 1);
-        }
+        // if (!aiClient.health()) {
+        //     return new AiGetQuizResponse("가다의 의미로 적절한 것은?", List.of("1. 이동하다",
+        //             "2. 오다",
+        //             "3. 머물다",
+        //             "4. 돌아가다",
+        //             "5. 걷다"), 1);
+        // }
 
         RestTemplate restTemplate = new RestTemplate();
         UserWordHistory userWordHistory = userWordHistoryRepository
@@ -56,7 +55,18 @@ public class QuizService {
         }
 
         Optional<UserParagraphWord> byMemberIdAndWord = userParagraphWordRepository.findByMemberIdAndWord(1, userWordHistory.getWord());
+        if (byMemberIdAndWord.isPresent()) {
+            UserParagraphWord userParagraphWord = byMemberIdAndWord.get();
+            Long count = userParagraphWord.getCount();
+            userParagraphWord.setCount(count + 1);
 
+            // 평균 갱신
+            Double averageTime = (count * userParagraphWord.getAverageTime() + userWordHistory.getTime()) / (count + 1);
+            userParagraphWord.setAverageTime(averageTime);
+        } else {
+            UserParagraphWord entity = userWordHistory.toEntity();
+            userParagraphWordRepository.save(entity);
+        }
 
         return "";
     }
