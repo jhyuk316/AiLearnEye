@@ -1,7 +1,9 @@
 package com.team4.ailearneye.service;
 
 import com.team4.ailearneye.api.dto.SolveRequest;
+import com.team4.ailearneye.entity.UserParagraphWord;
 import com.team4.ailearneye.entity.UserWordHistory;
+import com.team4.ailearneye.repository.UserParagraphWordRepository;
 import com.team4.ailearneye.repository.UserWordHistoryRepository;
 import com.team4.ailearneye.service.dto.AiClient;
 import com.team4.ailearneye.service.dto.AiGetQuizRequest;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -21,6 +24,7 @@ public class QuizService {
 
     private final AiClient aiClient;
     private final UserWordHistoryRepository userWordHistoryRepository;
+    private final UserParagraphWordRepository userParagraphWordRepository;
 
     public AiGetQuizResponse getQuiz(long literacyId, long quizNumber) {
         if (aiClient.health()) {
@@ -50,6 +54,9 @@ public class QuizService {
         } else {
             userWordHistory.setSolved(false);
         }
+
+        Optional<UserParagraphWord> byMemberIdAndWord = userParagraphWordRepository.findByMemberIdAndWord(1, userWordHistory.getWord());
+
 
         return "";
     }
