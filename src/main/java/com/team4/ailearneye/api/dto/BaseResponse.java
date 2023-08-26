@@ -14,6 +14,11 @@ public class BaseResponse<T> {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
+    public BaseResponse() {
+        this.code = ErrorCode.SUCCESS.name();
+        this.message = ErrorCode.SUCCESS.getMessage();
+    }
+
     public BaseResponse(T data) {
         this.code = ErrorCode.SUCCESS.name();
         this.message = ErrorCode.SUCCESS.getMessage();
