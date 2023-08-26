@@ -45,6 +45,7 @@ public class LiteracyService {
 
         assert aiCheckLiteracyResponse != null;
         List<UserWordHistory> entity = aiCheckLiteracyResponse.toEntity(literacyId);
+        log.debug("entity:{}", entity);
         userWordHistoryRepository.saveAll(entity);
 
         return literacyId;

@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface UserWordHistoryRepository extends JpaRepository<UserWordHistory, Long> {
-    Optional<UserWordHistory> findByLiteracyIdAndQuizId(long literacyId, long quizId);
+    Optional<UserWordHistory> findByLiteracyIdAndQuizId(Long literacyId, Long quizId);
 }

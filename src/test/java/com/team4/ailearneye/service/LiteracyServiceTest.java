@@ -11,7 +11,7 @@ class LiteracyServiceTest {
 
     @Test
     void init() {
-        AiCheckLiteracyResponse aiCheckLiteracyResponse = new AiCheckLiteracyResponse("", null);
+        AiCheckLiteracyResponse aiCheckLiteracyResponse = new AiCheckLiteracyResponse(null);
 
         List<UserWordHistory> entity = aiCheckLiteracyResponse.toEntity(1);
     }

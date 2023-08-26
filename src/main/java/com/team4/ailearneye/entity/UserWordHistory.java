@@ -14,18 +14,18 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class UserWordHistory extends BaseEntity {
 
-    private long literacyId;
-    private long memberId;
-    private long quizId;
+    private Long literacyId;
+    private Long memberId;
+    private Long quizId;
 
     private String word;
-    private long time;
-    private long rewindCount;
+    private Long time;
+    private Long rewindCount;
 
     @Column(length = 500)
     private String text;
-    private long offset;
+    private Long beginOffset;
 
-    private boolean isSolved;
+    private Boolean solved;
 
 }

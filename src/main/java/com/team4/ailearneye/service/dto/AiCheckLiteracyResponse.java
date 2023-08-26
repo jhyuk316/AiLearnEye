@@ -1,26 +1,28 @@
 package com.team4.ailearneye.service.dto;
 
 import com.team4.ailearneye.entity.UserWordHistory;
-import com.team4.ailearneye.enums.Morpheme;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class AiCheckLiteracyResponse {
 
     // private final String text;
-    private final List<WordDto> words;
+    private List<WordDto> words;
 
     @Data
+    @NoArgsConstructor
     public static class WordDto {
-        private final String word;
-        private final Morpheme morpheme;
-        private final long time;
-        private final long rewindCount;
-        private final long beginOffset;
-        private final String sentence;
+        private String word;
+        // private final Morpheme morpheme;
+        private long time;
+        private long rewindCount;
+        private String sentence;
+        private long beginOffset;
 
     }
 
@@ -32,13 +34,13 @@ public class AiCheckLiteracyResponse {
             WordDto word = wordDtos.get(i);
             UserWordHistory build = UserWordHistory.builder()
                     .literacyId(literacyId)
-                    .quizId(i)
+                    .quizId((long) i)
                     .word(word.word)
-                    .memberId(1)
+                    .memberId(1L)
                     .time(word.time)
                     .rewindCount(word.rewindCount)
                     .text(word.sentence)
-                    .offset(word.beginOffset)
+                    .beginOffset(word.beginOffset)
                     .build();
             result.add(build);
         }

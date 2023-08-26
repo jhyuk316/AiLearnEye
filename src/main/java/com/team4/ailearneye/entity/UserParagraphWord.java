@@ -11,12 +11,12 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class UserParagraphWord extends BaseEntity {
 
-    private long memberId;
+    private Long memberId;
     // private long paragraphId;
     private String word;
-    private long count;
-    private long averageTime;
-    private long rewindCount;
+    private Long count;
+    private Long averageTime;
+    private Long rewindCount;
 
 
 }
