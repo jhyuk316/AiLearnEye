@@ -2,7 +2,7 @@ package com.team4.ailearneye.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.jhyuk.baseproject.exceptions.ErrorCode;
+import com.team4.ailearneye.exceptions.ErrorCode;
 import lombok.Data;
 
 @Data
