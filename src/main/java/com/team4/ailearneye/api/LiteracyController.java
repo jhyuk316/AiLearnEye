@@ -1,6 +1,7 @@
 package com.team4.ailearneye.api;
 
 import com.team4.ailearneye.api.dto.CheckLiteracyRequest;
+import com.team4.ailearneye.api.dto.CheckLiteracyResponse;
 import com.team4.ailearneye.service.LiteracyService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,13 +21,13 @@ public class LiteracyController {
     private final LiteracyService literacyService;
 
     @PostMapping
-    public ResponseEntity<Object> checkLiteracy(
-            @RequestBody @Valid CheckLiteracyRequest checkLiteracyRequest){
+    public ResponseEntity<CheckLiteracyResponse> checkLiteracy(
+            @RequestBody @Valid CheckLiteracyRequest checkLiteracyRequest) {
 
-        log.info("checkLiteracyRequest:{}",checkLiteracyRequest);
+        log.info("checkLiteracyRequest:{}", checkLiteracyRequest);
 
-        literacyService.checkLiteracy(checkLiteracyRequest);
+        long l = literacyService.checkLiteracy(checkLiteracyRequest);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(new CheckLiteracyResponse(l));
     }
 }

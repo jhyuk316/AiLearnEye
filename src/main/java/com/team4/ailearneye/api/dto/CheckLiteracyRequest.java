@@ -1,8 +1,8 @@
 package com.team4.ailearneye.api.dto;
 
+import com.team4.ailearneye.entity.Literacy;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 
 import java.util.List;
 
@@ -14,5 +14,9 @@ public record CheckLiteracyRequest(
 
         @NotNull
         List<Integer> eyes) {
+
+    public Literacy toEntity() {
+        return Literacy.builder().text(this.text).build();
+    }
 
 }
