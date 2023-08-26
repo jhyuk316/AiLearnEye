@@ -30,21 +30,22 @@ public class LiteracyService {
         literacyRepository.save(literacy);
         long literacyId = literacy.getId();
 
+        if (!aiClient.health()) {
+            return -1;
+        }
         // ai 호출
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<AiCheckLiteracyResponse> aiCheckLiteracyResponseResponseEntity = restTemplate.postForEntity(AI_URL + "/ai/checkLiteracy", checkLiteracyRequest, AiCheckLiteracyResponse.class);
 
         AiCheckLiteracyResponse aiCheckLiteracyResponse = aiCheckLiteracyResponseResponseEntity.getBody();
 
-        aiClient.health();
 
         String forObject = restTemplate.getForObject(AI_URL, String.class);
         log.debug("{}", forObject);
 
-        if (false) {
-            List<UserWordHistory> entity = aiCheckLiteracyResponse.toEntity(literacyId);
-            userWordHistoryRepository.saveAll(entity);
-        }
+        assert aiCheckLiteracyResponse != null;
+        List<UserWordHistory> entity = aiCheckLiteracyResponse.toEntity(literacyId);
+        userWordHistoryRepository.saveAll(entity);
 
         return literacyId;
     }

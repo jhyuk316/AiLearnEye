@@ -1,6 +1,7 @@
 package com.team4.ailearneye.service.dto;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -9,9 +10,14 @@ import org.springframework.web.client.RestTemplate;
 public class AiClient {
     public static final String AI_URL = "https://rfnndmekmjhxnsjg.tunnel-pt.elice.io/proxy/8222/";
 
-    public void health() {
+    public boolean health() {
         RestTemplate restTemplate = new RestTemplate();
-        String health = restTemplate.getForObject(AI_URL, String.class);
-        log.info("health:{}", health);
+        try {
+            ResponseEntity<String> forEntity = restTemplate.getForEntity(AI_URL, String.class);
+            log.info("health:{}", forEntity.getBody());
+            return forEntity.getStatusCode().is2xxSuccessful();
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

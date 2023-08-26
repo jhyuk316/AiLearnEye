@@ -4,12 +4,15 @@ import com.team4.ailearneye.api.dto.SolveRequest;
 import com.team4.ailearneye.entity.UserWordHistory;
 import com.team4.ailearneye.repository.UserWordHistoryRepository;
 import com.team4.ailearneye.service.dto.AiClient;
+import com.team4.ailearneye.service.dto.AiGetQuizRequest;
+import com.team4.ailearneye.service.dto.AiGetQuizResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Optional;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -19,17 +22,25 @@ public class QuizService {
     private final AiClient aiClient;
     private final UserWordHistoryRepository userWordHistoryRepository;
 
-    public String getQuiz(long literacyId, long quizNumber) {
-        aiClient.health();
+    public AiGetQuizResponse getQuiz(long literacyId, long quizNumber) {
+        if (aiClient.health()) {
+            return new AiGetQuizResponse("가다의 의미로 적절한 것은?", List.of("1. 이동하다",
+                    "2. 오다",
+                    "3. 머물다",
+                    "4. 돌아가다",
+                    "5. 걷다"), 1);
+        }
 
         RestTemplate restTemplate = new RestTemplate();
+        UserWordHistory userWordHistory = userWordHistoryRepository
+                .findByLiteracyIdAndQuizId(literacyId, quizNumber)
+                .orElseThrow();
 
-        Optional<UserWordHistory> byLiteracyIdAndQuizId = userWordHistoryRepository.findByLiteracyIdAndQuizId(literacyId, quizNumber);
+        AiGetQuizRequest aiGetQuizRequest = new AiGetQuizRequest(userWordHistory.getWord(), userWordHistory.getText(), userWordHistory.getOffset());
 
-        restTemplate.postForEntity(AiClient.AI_URL + "/ai/quiz", )
+        ResponseEntity<AiGetQuizResponse> aiGetQuizResponse = restTemplate.postForEntity(AiClient.AI_URL + "/ai/quiz", aiGetQuizRequest, AiGetQuizResponse.class);
 
-
-        return "";
+        return aiGetQuizResponse.getBody();
     }
 
     public String solve(SolveRequest solveRequest) {
