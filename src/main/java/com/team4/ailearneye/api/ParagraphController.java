@@ -17,9 +17,8 @@ public class ParagraphController {
 
     private final ParagraphService paragraphService;
 
-
     @GetMapping
-    public ResponseEntity<ParagraphListDto> getParagraphs(){
+    public ResponseEntity<ParagraphListDto> getParagraphs() {
 
         ParagraphListDto paragraphs = paragraphService.getParagraphs();
 
@@ -27,7 +26,7 @@ public class ParagraphController {
     }
 
     @GetMapping("/{paragraphId}")
-    public ResponseEntity<ParagraphDto> getParagraphs(@PathVariable long paragraphId){
+    public ResponseEntity<ParagraphDto> getParagraphs(@PathVariable long paragraphId) {
         ParagraphDto paragraphs = paragraphService.getParagraphs(paragraphId);
         return ResponseEntity.ok().body(paragraphs);
     }

@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @NoArgsConstructor
-public class Word extends BaseEntity{
+public class Word extends BaseEntity {
 
     private String word;
     private Morpheme morpheme;

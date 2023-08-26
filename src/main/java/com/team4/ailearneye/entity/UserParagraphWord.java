@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @NoArgsConstructor
-public class UserParagraphWord extends BaseEntity{
+public class UserParagraphWord extends BaseEntity {
 
     private long memberId;
     private long paragraphId;

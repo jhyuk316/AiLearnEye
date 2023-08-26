@@ -20,7 +20,7 @@ public class ParagraphService {
         return ParagraphListDto.of(all);
     }
 
-    public ParagraphDto getParagraphs(long id){
+    public ParagraphDto getParagraphs(long id) {
         Paragraph paragraph = paragraphRepository.findById(id).orElseThrow();
         return ParagraphDto.of(paragraph);
     }

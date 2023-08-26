@@ -10,7 +10,7 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @NoArgsConstructor
-public class Paragraph extends BaseEntity{
+public class Paragraph extends BaseEntity {
 
     private String title;
 

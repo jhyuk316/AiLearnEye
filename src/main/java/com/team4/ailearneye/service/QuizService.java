@@ -26,7 +26,7 @@ public class QuizService {
 
         Optional<UserWordHistory> byLiteracyIdAndQuizId = userWordHistoryRepository.findByLiteracyIdAndQuizId(literacyId, quizNumber);
 
-        restTemplate.postForEntity(AiClient.AI_URL+"/ai/quiz",)
+        restTemplate.postForEntity(AiClient.AI_URL + "/ai/quiz", )
 
 
         return "";

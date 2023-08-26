@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CommonApiController {
 
     @GetMapping("health")
-    public ResponseEntity<String> health(){
+    public ResponseEntity<String> health() {
         return ResponseEntity.ok().body("OK");
     }
 }
