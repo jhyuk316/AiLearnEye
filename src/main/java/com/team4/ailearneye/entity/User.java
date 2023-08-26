@@ -9,9 +9,9 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @NoArgsConstructor
-public class Member extends BaseEntity {
+public class User extends BaseEntity {
 
-    String userId;
+    String userName;
     String email;
     String password;
 
