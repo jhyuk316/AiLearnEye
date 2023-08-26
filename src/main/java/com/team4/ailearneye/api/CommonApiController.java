@@ -1,4 +1,4 @@
-package com.team4.ailearneye.Api;
+package com.team4.ailearneye.api;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
