@@ -1,6 +1,7 @@
 package com.team4.ailearneye.service;
 
 import com.team4.ailearneye.enums.Morpheme;
+import com.team4.ailearneye.service.dto.AiCheckLiteracyResponse;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
