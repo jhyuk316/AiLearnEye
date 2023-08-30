@@ -1,15 +1,17 @@
 spring:
   datasource:
-    #    url: jdbc:h2:tcp://localhost/./learnEyeDb
-    url: jdbc:h2:tcp://localhost/~/learnEyeDb
+    #    url: jdbc:h2:tcp://localhost/~/learnEyeDb
     #    url: jdbc:h2:file:~/learnEyeDb
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:mariadb://database-ai-learn-eye.cqkoovhoel5n.ap-northeast-2.rds.amazonaws.com:3306/ailearneye
+    #    username: sa
+    username: admin
+    password: jh12345678
+    #    driver-class-name: org.h2.Driver
+    driver-class-name: org.mariadb.jdbc.Driver
   jpa:
     hibernate:
-      #      ddl-auto: create
-      ddl-auto: none
+      ddl-auto: create
+    #      ddl-auto: none
     properties:
       hibernate:
         # show_sql: true
