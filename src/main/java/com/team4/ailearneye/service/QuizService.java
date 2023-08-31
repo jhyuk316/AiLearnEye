@@ -41,7 +41,7 @@ public class QuizService {
 
         AiGetQuizRequest aiGetQuizRequest = new AiGetQuizRequest(userWordHistory.getWord(), userWordHistory.getText(), userWordHistory.getBeginOffset());
         log.info("aiGetQuizRequest:{}", aiGetQuizRequest);
-        ResponseEntity<AiGetQuizResponse> aiGetQuizResponse = restTemplate.postForEntity(AiClient.AI_URL + "/ai/quiz", aiGetQuizRequest, AiGetQuizResponse.class);
+        ResponseEntity<AiGetQuizResponse> aiGetQuizResponse = restTemplate.postForEntity("https://spjgd7e8jd.execute-api.ap-northeast-2.amazonaws.com/default/quiz", aiGetQuizRequest, AiGetQuizResponse.class);
         AiGetQuizResponse body = aiGetQuizResponse.getBody();
         log.info("Quiz body:{}", body);
         return aiGetQuizResponse.getBody();

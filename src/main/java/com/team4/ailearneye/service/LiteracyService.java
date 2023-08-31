@@ -35,13 +35,14 @@ public class LiteracyService {
         }
         // ai 호출
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<AiCheckLiteracyResponse> aiCheckLiteracyResponseResponseEntity = restTemplate.postForEntity(AI_URL + "/ai/checkLiteracy", checkLiteracyRequest, AiCheckLiteracyResponse.class);
+        // ResponseEntity<AiCheckLiteracyResponse> aiCheckLiteracyResponseResponseEntity = restTemplate.postForEntity(AI_URL + "/ai/checkLiteracy", checkLiteracyRequest, AiCheckLiteracyResponse.class);
+        ResponseEntity<AiCheckLiteracyResponse> aiCheckLiteracyResponseResponseEntity = restTemplate.postForEntity("https://dijt3c982f.execute-api.ap-northeast-2.amazonaws.com/default/skt_hack", checkLiteracyRequest, AiCheckLiteracyResponse.class);
 
         AiCheckLiteracyResponse aiCheckLiteracyResponse = aiCheckLiteracyResponseResponseEntity.getBody();
 
 
-        String forObject = restTemplate.getForObject(AI_URL, String.class);
-        log.debug("{}", forObject);
+        // String forObject = restTemplate.getForObject(AI_URL, String.class);
+        // log.debug("{}", forObject);
 
         assert aiCheckLiteracyResponse != null;
         List<UserWordHistory> entity = aiCheckLiteracyResponse.toEntity(literacyId);
