@@ -12,9 +12,20 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class Literacy extends BaseEntity {
 
+    private long paragraphId;
+    
     @Column(length = 1000)
     private String text;
     @Column(columnDefinition = "TEXT")
     private String eyes;
 
+
+    @Override
+    public String toString() {
+        return "Literacy{" +
+                "text='" + text + '\'' +
+                ", eyes='" + eyes + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

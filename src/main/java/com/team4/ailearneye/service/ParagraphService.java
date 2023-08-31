@@ -1,6 +1,5 @@
 package com.team4.ailearneye.service;
 
-import com.team4.ailearneye.Utils;
 import com.team4.ailearneye.api.dto.ParagraphDto;
 import com.team4.ailearneye.api.dto.ParagraphListDto;
 import com.team4.ailearneye.entity.Paragraph;
@@ -21,7 +20,7 @@ public class ParagraphService {
 
     public ParagraphListDto getParagraphs() {
         List<Paragraph> all = paragraphRepository.findAll();
-        log.info("all:{}", Utils.toJsonPretty(all));
+        log.info("all:{}", all);
         return ParagraphListDto.of(all);
     }
 

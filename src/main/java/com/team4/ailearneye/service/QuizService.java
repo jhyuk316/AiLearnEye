@@ -5,7 +5,6 @@ import com.team4.ailearneye.entity.UserParagraphWord;
 import com.team4.ailearneye.entity.UserWordHistory;
 import com.team4.ailearneye.repository.UserParagraphWordRepository;
 import com.team4.ailearneye.repository.UserWordHistoryRepository;
-import com.team4.ailearneye.service.dto.AiClient;
 import com.team4.ailearneye.service.dto.AiGetQuizRequest;
 import com.team4.ailearneye.service.dto.AiGetQuizResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,7 @@ import java.util.Optional;
 @Service
 public class QuizService {
 
-    private final AiClient aiClient;
+    // private final AiClient aiClient;
     private final UserWordHistoryRepository userWordHistoryRepository;
     private final UserParagraphWordRepository userParagraphWordRepository;
 
