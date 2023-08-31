@@ -41,6 +41,10 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+bootJar {
+    archiveBaseName = 'AiLearnEye'
+}
+
 jar {
     enabled = false
 }
