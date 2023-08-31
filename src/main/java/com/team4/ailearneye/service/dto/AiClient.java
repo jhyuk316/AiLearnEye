@@ -8,7 +8,8 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @Service
 public class AiClient {
-    public static final String AI_URL = "https://rfnndmekmjhxnsjg.tunnel-pt.elice.io/proxy/8222/";
+    // public static final String AI_URL = "https://rfnndmekmjhxnsjg.tunnel-pt.elice.io/proxy/8222/";
+    public static final String AI_URL = "https://dijt3c982f.execute-api.ap-northeast-2.amazonaws.com/default/skt_hack/";
 
     public boolean health() {
         RestTemplate restTemplate = new RestTemplate();
