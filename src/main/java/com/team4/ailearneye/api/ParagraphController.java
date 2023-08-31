@@ -19,9 +19,7 @@ public class ParagraphController {
 
     @GetMapping
     public ResponseEntity<ParagraphListDto> getParagraphs() {
-
         ParagraphListDto paragraphs = paragraphService.getParagraphs();
-
         return ResponseEntity.ok().body(paragraphs);
     }
 

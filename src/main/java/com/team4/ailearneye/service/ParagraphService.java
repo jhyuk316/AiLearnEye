@@ -1,5 +1,6 @@
 package com.team4.ailearneye.service;
 
+import com.google.gson.Gson;
 import com.team4.ailearneye.api.dto.ParagraphDto;
 import com.team4.ailearneye.api.dto.ParagraphListDto;
 import com.team4.ailearneye.entity.Paragraph;
@@ -17,10 +18,11 @@ import java.util.List;
 public class ParagraphService {
 
     private final ParagraphRepository paragraphRepository;
+    private final Gson gsonPretty;
 
     public ParagraphListDto getParagraphs() {
         List<Paragraph> all = paragraphRepository.findAll();
-        log.info("all:{}", all);
+        log.info("all:{}", gsonPretty.toJson(all));
         return ParagraphListDto.of(all);
     }
 
