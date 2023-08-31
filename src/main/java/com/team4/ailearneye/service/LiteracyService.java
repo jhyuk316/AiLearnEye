@@ -1,5 +1,6 @@
 package com.team4.ailearneye.service;
 
+import com.team4.ailearneye.Utils;
 import com.team4.ailearneye.api.dto.CheckLiteracyRequest;
 import com.team4.ailearneye.entity.Literacy;
 import com.team4.ailearneye.entity.UserWordHistory;
@@ -40,6 +41,7 @@ public class LiteracyService {
 
         AiCheckLiteracyResponse aiCheckLiteracyResponse = aiCheckLiteracyResponseResponseEntity.getBody();
 
+        log.info("aiCheckLiteracyResponse:{}", Utils.toJson(aiCheckLiteracyResponse));
 
         // String forObject = restTemplate.getForObject(AI_URL, String.class);
         // log.debug("{}", forObject);
