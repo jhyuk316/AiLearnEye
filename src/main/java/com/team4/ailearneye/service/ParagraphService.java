@@ -5,10 +5,13 @@ import com.team4.ailearneye.api.dto.ParagraphListDto;
 import com.team4.ailearneye.entity.Paragraph;
 import com.team4.ailearneye.repository.ParagraphRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ParagraphService {
@@ -17,6 +20,7 @@ public class ParagraphService {
 
     public ParagraphListDto getParagraphs() {
         List<Paragraph> all = paragraphRepository.findAll();
+        log.info("all:{}", all);
         return ParagraphListDto.of(all);
     }
 
