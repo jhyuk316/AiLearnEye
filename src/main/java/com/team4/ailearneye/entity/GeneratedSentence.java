@@ -11,6 +11,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class GeneratedSentence extends BaseEntity {
 
-    private String literacyId;
+    private long literacyId;
     private String text;
+    private String commentary;
 }

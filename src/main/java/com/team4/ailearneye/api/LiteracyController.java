@@ -2,15 +2,13 @@ package com.team4.ailearneye.api;
 
 import com.team4.ailearneye.api.dto.CheckLiteracyRequest;
 import com.team4.ailearneye.api.dto.CheckLiteracyResponse;
+import com.team4.ailearneye.api.dto.GetMoreSentenceResponse;
 import com.team4.ailearneye.service.LiteracyService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -30,4 +28,11 @@ public class LiteracyController {
 
         return ResponseEntity.ok().body(new CheckLiteracyResponse(l));
     }
+
+    @GetMapping("{literacyId}/more")
+    public ResponseEntity<GetMoreSentenceResponse> getMoreSentence(@RequestParam long literacyId) {
+        GetMoreSentenceResponse moreSentence = literacyService.getMoreSentence(literacyId);
+        return ResponseEntity.ok().body(moreSentence);
+    }
+
 }

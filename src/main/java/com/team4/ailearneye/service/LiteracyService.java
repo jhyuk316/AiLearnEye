@@ -1,8 +1,11 @@
 package com.team4.ailearneye.service;
 
 import com.team4.ailearneye.api.dto.CheckLiteracyRequest;
+import com.team4.ailearneye.api.dto.GetMoreSentenceResponse;
+import com.team4.ailearneye.entity.GeneratedSentence;
 import com.team4.ailearneye.entity.Literacy;
 import com.team4.ailearneye.entity.UserWordHistory;
+import com.team4.ailearneye.repository.GeneratedSentenceRepository;
 import com.team4.ailearneye.repository.LiteracyRepository;
 import com.team4.ailearneye.repository.UserWordHistoryRepository;
 import com.team4.ailearneye.service.dto.AiCheckLiteracyResponse;
@@ -22,6 +25,10 @@ public class LiteracyService {
     public static final String AI_URL = "https://rfnndmekmjhxnsjg.tunnel-pt.elice.io/proxy/8222/";
     private final LiteracyRepository literacyRepository;
     private final UserWordHistoryRepository userWordHistoryRepository;
+    private final GeneratedSentenceRepository generatedSentenceRepository;
+
+    private final RestTemplate restTemplate = new RestTemplate();
+
     // private final AiClient aiClient;
 
     public long checkLiteracy(CheckLiteracyRequest checkLiteracyRequest) {
@@ -36,7 +43,7 @@ public class LiteracyService {
         // }
 
         // ai 호출
-        RestTemplate restTemplate = new RestTemplate();
+
         // ResponseEntity<AiCheckLiteracyResponse> aiCheckLiteracyResponseResponseEntity = restTemplate.postForEntity(AI_URL + "/ai/checkLiteracy", checkLiteracyRequest, AiCheckLiteracyResponse.class);
         ResponseEntity<AiCheckLiteracyResponse> aiCheckLiteracyResponseResponseEntity = restTemplate.postForEntity("https://dijt3c982f.execute-api.ap-northeast-2.amazonaws.com/default/skt_hack", checkLiteracyRequest, AiCheckLiteracyResponse.class);
 
@@ -53,5 +60,19 @@ public class LiteracyService {
         userWordHistoryRepository.saveAll(entity);
 
         return literacyId;
+    }
+
+    public GetMoreSentenceResponse getMoreSentence(long literacyId) {
+
+        // AI 지문 생성 요청
+        List<String> words = List.of("Succinct", "Commiserate", "modern", "economical", "natural");
+        // ResponseEntity<GetMoreSentenceResponse> getMoreSentenceResponseResponseEntity = restTemplate.postForEntity("https://dijt3c982f.execute-api.ap-northeast-2.amazonaws.com/default/skt_hack", words, GetMoreSentenceResponse.class);
+        // GetMoreSentenceResponse getMoreSentenceResponse = getMoreSentenceResponseResponseEntity.getBody();
+
+        GetMoreSentenceResponse getMoreSentenceResponse = new GetMoreSentenceResponse("title", "new Sentence", "comment");
+        GeneratedSentence entity = getMoreSentenceResponse.toEntity(literacyId);
+        generatedSentenceRepository.save(entity);
+
+        return getMoreSentenceResponse;
     }
 }

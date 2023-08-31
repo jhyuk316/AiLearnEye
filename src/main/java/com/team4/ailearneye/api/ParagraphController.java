@@ -28,5 +28,5 @@ public class ParagraphController {
         ParagraphDto paragraphs = paragraphService.getParagraphs(paragraphId);
         return ResponseEntity.ok().body(paragraphs);
     }
-
+    
 }
