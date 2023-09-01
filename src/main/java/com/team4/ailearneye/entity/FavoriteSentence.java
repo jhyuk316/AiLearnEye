@@ -12,7 +12,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 public class FavoriteSentence extends BaseEntity {
 
-    private long paragraphId;
+    @Column
+    private Long paragraphId;
 
     @Column(columnDefinition = "TEXT")
     private String sentence;
