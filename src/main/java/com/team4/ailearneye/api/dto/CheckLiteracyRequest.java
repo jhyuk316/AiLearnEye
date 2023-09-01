@@ -1,5 +1,6 @@
 package com.team4.ailearneye.api.dto;
 
+import com.team4.ailearneye.Utils;
 import com.team4.ailearneye.entity.Literacy;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,7 +19,7 @@ public record CheckLiteracyRequest(
     public Literacy toEntity() {
         return Literacy.builder()
                 .text(this.text)
-                // .eyes(Utils.toJson(this.eyes))
+                .eyes(Utils.toJson(this.eyes))
                 .build();
     }
 
