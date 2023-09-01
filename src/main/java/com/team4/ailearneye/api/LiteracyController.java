@@ -29,8 +29,9 @@ public class LiteracyController {
         return ResponseEntity.ok().body(new CheckLiteracyResponse(l));
     }
 
-    @GetMapping("{literacyId}/more")
-    public ResponseEntity<GetMoreSentenceResponse> getMoreSentence(@RequestParam long literacyId) {
+    @GetMapping("/{literacyId}/more")
+    public ResponseEntity<GetMoreSentenceResponse> getMoreSentence(@PathVariable Long literacyId) {
+        log.info("more sentence request literacyId:{}", literacyId);
         GetMoreSentenceResponse moreSentence = literacyService.getMoreSentence(literacyId);
         return ResponseEntity.ok().body(moreSentence);
     }
