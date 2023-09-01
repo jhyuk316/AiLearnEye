@@ -16,7 +16,7 @@ public class Paragraph extends BaseEntity {
 
     private String title;
 
-    @Column(length = 1000)
+    @Column(columnDefinition = "TEXT")
     private String text;
 
 }

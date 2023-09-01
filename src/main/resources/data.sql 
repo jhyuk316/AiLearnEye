@@ -1,28 +1,40 @@
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 1, null, 'Close Encounter with a Grizzly: From Joy to Survival in the Rocky Mountains',
-        'On a twoweek trip in the Rocky Mountains');
+VALUES (null, 1, null,
+        'On a twoweek trip in the Rocky Mountains, I saw a grizzly bear in its native habitat. At first, I felt joy as I watched the bear walk across the land. He stopped every once in a while to turn his head about, sniffing deeply. He was following the scent of something, and slowly I began to realize that this giant animal was smelling me! I froze. This was no longer a wonderful experience; it was now an issue of survival. The bear’s motivation was to find meat to eat, and I was clearly on his menu.',
+        ' I saw a grizzly bear in its native habitat. At first');
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 2, null, 'Optimizing Productivity: Harnessing Your Energy Peaks for Effective Work',
-        'It is difficult for any of us to maintain');
+VALUES (null, 2, null,
+        'It is difficult for any of us to maintain a constant level of attention throughout our working day. We all have body rhythms characterised by peaks and valleys of energy and alertness. You will achieve more',
+        ' and feel confident as a benefit');
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 3, null, 'The Hidden Costs of Technology: Transforming Livelihoods and Impact on Well-Being',
-        'If we adopt technology');
+VALUES (null, 3, null,
+        'If we adopt technology, we need to pay its costs. Thousands of traditional livelihoods have been pushed aside by progress, and the lifestyles around those jobs removed. Hundreds of millions of humans today work at jobs they hate, producing things they have no love for. Sometimes these jobs cause physical pain, disability, or chronic disease. Technology creates many new jobs that are certainly dangerous. At the same time, mass education and media train humans to avoid lowtech physical work, to seek jobs working in the digital world. The divorce of the hands from the head puts a stress on the human mind. Indeed, the sedentary nature of the bestpaying jobs is a health risk─ for body and mind.',
+        ' we need to pay its costs. Thousands of traditional livelihoods have been pushed aside by progress');
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 4, null, 'Navigating College Learning: The Art of Adaptation and Effective Study Strategies',
-        'When students are starting their college life');
+VALUES (null, 4, null,
+        'When students are starting their college life, they may approach every course, test, or learning task the same way, using what we like to call “the rubberstamp approach.” Think about it this way: Would you wear a tuxedo to a baseball game? A colorful dress to a funeral? A bathing suit to religious services? Probably not. You know there’s appropriate dress for different occasions and settings. Skillful learners know that “putting on the same clothes” won’t work for every class. They are flexible learners. They have different strategies and know when to use them. They know that you study for multiplechoice tests differently than you study for essay tests. And they not only know what to do, but they also know how to do it.',
+        'Navigating College Learning: The Art of Adaptation and Effective Study Strategies');
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 5, null, 'Evolution of Leisure and Tourism: Socioeconomic Progress and Changing Travel Trends',
-        'As the social and economic situation of countries got better');
+VALUES (null, 5, null,
+        'As the social and economic situation of countries got better, wage levels and working conditions improved. Gradually people were given more time off. At the same time, forms of transport improved and it became faster and cheaper to get to places. England’s industrial revolution led to many of these changes. Railways, in the nineteenth century, opened up now famous seaside resorts such as Blackpool and Brighton. With the railways came many large hotels. In Canada, for example, the new coasttocoast railway system made possible the building of such famous hotels as Banff Springs and Chateau Lake Louise in the Rockies. Later, the arrival of air transport opened up more of the world and led to tourism growth.',
+        'Evolution of Leisure and Tourism: Socioeconomic Progress and Changing Travel Trends');
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 6, null, 'The Paradox of Success: Navigating Comfortable Ruts and Career Satisfaction',
-        'Success can lead you off your intended path');
+VALUES (null, 6, null,
+        'Success can lead you off your intended path and into a comfortable rut. If you are good at something and are well rewarded for doing it, you may want to keep doing it even if you stop enjoying it. The danger is that one day you look around and realize you’re so deep in this comfortable rut that you can no longer see the sun or breathe fresh air; the sides of the rut have become so slippery that it would take a superhuman effort to climb out; and, effectively, you’re stuck. And it’s a situation that many working people worry they’re in now. The poor employment market has left them feeling locked in what may be a secure, or even wellpaying—but ultimately unsatisfying—job.',
+        'The Paradox of Success: Navigating Comfortable Ruts and Career Satisfaction');
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 7, null, 'Pioneering Spirit: The Adventures of Lilian Bland', 'Lilian Bland was born in Kent');
+VALUES (null, 7, null,
+        'Lilian Bland was born in Kent, England in 1878. Unlike most other girls at the time she wore trousers and spent her time enjoying adventurous activities like horse riding and hunting. Lilian began her career as a sports and wildlife photographer for British newspapers. In 1910 she became the first woman to design, build, and fly her own airplane. In order to persuade her to try a slightly safer activity, Lilian’s dad bought her a car. Soon Lilian was a master driver and ended up working as a car dealer. She never went back to flying but lived a long and exciting life nonetheless. She married, moved to Canada, and had a kid. Eventually, she moved back to England, and lived there for the rest of her life.',
+        'Pioneering Spirit: The Adventures of Lilian Bland');
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 8, null, 'Social Proof: Navigating Trust and Decision Making Through Group Influence',
-        'To help decide what’s risky and what’s safe');
+VALUES (null, 8, null,
+        'To help decide what’s risky and what’s safe, who’s trustworthy and who’s not, we look for social evidence. From an evolutionary view, following the group is almost always positive for our prospects of survival. “If everyone’s doing it, it must be a sensible thing to do,” explains famous psychologist and best selling writer of Influence, Robert Cialdini. While we can frequently see this today in product reviews, even subtler cues within the environment can signal trustworthiness. Consider this: when you visit a local restaurant, are they busy? Is there a line outside or is it easy to find a seat? It is a hassle to wait, but a line can be a powerful cue that the food’s tasty, and these seats are in demand. More often than not, it’s good to adopt the practices of those around you.',
+        'Social Proof: Navigating Trust and Decision Making Through Group Influence');
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 9, null, 'Lost and Found: A Magical Reunion in the Midnight Streets', 'When I woke up in our hotel room');
+VALUES (null, 9, null,
+        'When I woke up in our hotel room, it was almost midnight. I didn’t see my husband nor daughter. I called them, but I heard their phones ringing in the room. Feeling worried, I went outside and walked down the street, but they were nowhere to be found. When I decided I should ask someone for help, a crowd nearby caught my attention. I approached, hoping to find my husband and daughter, and suddenly I saw two familiar faces. I smiled, feeling calm. Just then, my daughter saw me and called, “Mom!” They were watching the magic show. Finally, I felt all my worries disappear.',
+        'Lost and Found: A Magical Reunion in the Midnight Streets');
 INSERT INTO ailearneye.paragraph (created_date, id, update_date, text, title)
-VALUES (null, 10, null, 'Simplifying Life: The Benefits of Consolidating Work and Personal Calendars',
-        'Research shows that people who work have two calendars');
+VALUES (null, 10, null,
+        'Research shows that people who work have two calendars: one for work and one for their personal lives. Although it may seem sensible, having two separate calendars for work and personal life can lead to distractions. To check if something is missing, you will find yourself checking your todo lists multiple times. Instead, organize all of your tasks in one place. It doesn’t matter if you use digital or paper media. It’s okay to keep your professional and personal tasks in one place. This will give you a good idea of how time is divided between work and home. This will allow you to make informed decisions about which tasks are most important.',
+        'Simplifying Life: The Benefits of Consolidating Work and Personal Calendars');
