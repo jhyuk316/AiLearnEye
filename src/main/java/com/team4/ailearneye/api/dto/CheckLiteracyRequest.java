@@ -10,6 +10,7 @@ import java.util.List;
 public record CheckLiteracyRequest(
         // long userId,
         long paragraphId,
+
         @NotBlank
         String text,
 

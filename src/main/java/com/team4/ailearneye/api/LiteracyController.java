@@ -31,7 +31,7 @@ public class LiteracyController {
 
     @GetMapping("/{literacyId}/more")
     public ResponseEntity<GetMoreSentenceResponse> getMoreSentence(@PathVariable Long literacyId) {
-        log.info("more sentence request literacyId:{}", literacyId);
+        log.info("literacyId:{}", literacyId);
         GetMoreSentenceResponse moreSentence = literacyService.getMoreSentence(literacyId);
         return ResponseEntity.ok().body(moreSentence);
     }
