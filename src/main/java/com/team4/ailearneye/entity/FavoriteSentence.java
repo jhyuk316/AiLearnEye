@@ -10,13 +10,14 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @NoArgsConstructor
-public class GeneratedSentence extends BaseEntity {
+public class FavoriteSentence extends BaseEntity {
 
-    private long literacyId;
+    private long paragraphId;
 
     @Column(columnDefinition = "TEXT")
-    private String text;
-    
+    private String sentence;
+
     @Column(columnDefinition = "TEXT")
     private String commentary;
+
 }

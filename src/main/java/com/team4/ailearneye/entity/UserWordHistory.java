@@ -22,8 +22,9 @@ public class UserWordHistory extends BaseEntity {
     private Long time;
     private Long rewindCount;
 
-    @Column(length = 500)
+    @Column(columnDefinition = "TEXT")
     private String text;
+    
     private Long beginOffset;
 
     private Boolean solved;

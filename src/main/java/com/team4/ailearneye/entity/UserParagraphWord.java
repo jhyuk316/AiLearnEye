@@ -14,7 +14,7 @@ import lombok.experimental.SuperBuilder;
 public class UserParagraphWord extends BaseEntity {
 
     private Long memberId;
-    // private long paragraphId;
+    private long paragraphId;
     private String word;
     private Long count;
     private Double averageTime;
