@@ -17,6 +17,18 @@ public record CheckLiteracyRequest(
         @NotNull
         List<Integer> eyes) {
 
+    // public CheckLiteracyRequest(long paragraphId, String text, List<Integer> eyes) {
+    //     int length = text.length();
+    //     List<Integer> collect = eyes.stream()
+    //             .filter(i -> i < length)
+    //             .filter(i -> i > 0)
+    //             .collect(Collectors.toList());
+    //
+    //     this.paragraphId = paragraphId;
+    //     this.text = text;
+    //     this.eyes = collect;
+    // }
+
     public Literacy toEntity() {
         return Literacy.builder()
                 .text(this.text)

@@ -1,5 +1,6 @@
 package com.team4.ailearneye.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team4.ailearneye.api.dto.CheckLiteracyRequest;
 import com.team4.ailearneye.api.dto.GetMoreSentenceResponse;
 import com.team4.ailearneye.entity.GeneratedSentence;
@@ -28,12 +29,15 @@ public class LiteracyService {
     private final LiteracyRepository literacyRepository;
     private final UserWordHistoryRepository userWordHistoryRepository;
     private final GeneratedSentenceRepository generatedSentenceRepository;
+    private final ObjectMapper objectMapper;
 
     private final RestTemplate restTemplate = new RestTemplate();
 
     // private final AiClient aiClient;
 
     public long checkLiteracy(CheckLiteracyRequest checkLiteracyRequest) {
+        log.info("checkLiteracyRequest:{}", checkLiteracyRequest);
+
         Literacy literacy = checkLiteracyRequest.toEntity();
 
         log.info("literacy:{}", literacy);
@@ -45,6 +49,13 @@ public class LiteracyService {
         // }
 
         // ai 호출
+
+        try {
+            String s = objectMapper.writeValueAsString(checkLiteracyRequest);
+            log.info("checkLiteracyRequest:{}", s);
+        } catch (Exception e) {
+
+        }
 
         // ResponseEntity<AiCheckLiteracyResponse> aiCheckLiteracyResponseResponseEntity = restTemplate.postForEntity(AI_URL + "/ai/checkLiteracy", checkLiteracyRequest, AiCheckLiteracyResponse.class);
         ResponseEntity<AiCheckLiteracyResponse> aiCheckLiteracyResponseResponseEntity = restTemplate.postForEntity("https://dijt3c982f.execute-api.ap-northeast-2.amazonaws.com/default/skt_hack", checkLiteracyRequest, AiCheckLiteracyResponse.class);
