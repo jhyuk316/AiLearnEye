@@ -1,5 +1,6 @@
 package com.team4.ailearneye.api;
 
+import com.team4.ailearneye.api.dto.CheckLiteracyMoreRequest;
 import com.team4.ailearneye.api.dto.CheckLiteracyRequest;
 import com.team4.ailearneye.api.dto.CheckLiteracyResponse;
 import com.team4.ailearneye.api.dto.GetMoreSentenceResponse;
@@ -34,6 +35,18 @@ public class LiteracyController {
         log.info("literacyId:{}", literacyId);
         GetMoreSentenceResponse moreSentence = literacyService.getMoreSentence(literacyId);
         return ResponseEntity.ok().body(moreSentence);
+    }
+
+    @PostMapping("/{literacyId}/more/check")
+    public ResponseEntity<String> checkLiteracyMore(
+            @PathVariable Long literacyId,
+            @RequestBody @Valid CheckLiteracyMoreRequest checkLiteracyRequest) {
+        log.info("literacyId:{}", literacyId);
+
+        CheckLiteracyMoreRequest checkLiteracyMoreRequest = new CheckLiteracyMoreRequest(literacyId, checkLiteracyRequest.text(), checkLiteracyRequest.eyes());
+        log.info("checkLiteracyMoreRequest:{}", checkLiteracyMoreRequest);
+        long l = literacyService.checkLiteracyMore(checkLiteracyMoreRequest);
+        return ResponseEntity.ok().body("OK");
     }
 
 }

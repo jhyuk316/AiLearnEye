@@ -1,15 +1,16 @@
 package com.team4.ailearneye.api.dto;
 
 import com.team4.ailearneye.Utils;
-import com.team4.ailearneye.entity.Literacy;
+import com.team4.ailearneye.entity.LiteracyMore;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
-public record CheckLiteracyRequest(
+public record CheckLiteracyMoreRequest(
         // long userId,
-        Long paragraphId,
+
+        Long literacyId,
 
         @NotBlank
         String text,
@@ -29,8 +30,8 @@ public record CheckLiteracyRequest(
     //     this.eyes = collect;
     // }
 
-    public Literacy toLiteracy() {
-        return Literacy.builder()
+    public LiteracyMore toLiteracyMore() {
+        return LiteracyMore.builder()
                 .text(this.text)
                 .eyes(Utils.toJson(this.eyes))
                 .build();

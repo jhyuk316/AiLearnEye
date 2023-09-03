@@ -1,14 +1,11 @@
 package com.team4.ailearneye.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.team4.ailearneye.api.dto.CheckLiteracyMoreRequest;
 import com.team4.ailearneye.api.dto.CheckLiteracyRequest;
 import com.team4.ailearneye.api.dto.GetMoreSentenceResponse;
-import com.team4.ailearneye.entity.GeneratedSentence;
-import com.team4.ailearneye.entity.Literacy;
-import com.team4.ailearneye.entity.UserWordHistory;
-import com.team4.ailearneye.repository.GeneratedSentenceRepository;
-import com.team4.ailearneye.repository.LiteracyRepository;
-import com.team4.ailearneye.repository.UserWordHistoryRepository;
+import com.team4.ailearneye.entity.*;
+import com.team4.ailearneye.repository.*;
 import com.team4.ailearneye.service.dto.AiCheckLiteracyResponse;
 import com.team4.ailearneye.service.dto.AiGetSentenceRequest;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +24,11 @@ public class LiteracyService {
 
     public static final String AI_URL = "https://rfnndmekmjhxnsjg.tunnel-pt.elice.io/proxy/8222/";
     private final LiteracyRepository literacyRepository;
+    private final LiteracyMoreRepository literacyMoreRepository;
+
     private final UserWordHistoryRepository userWordHistoryRepository;
+    private final UserWordMoreHistoryRepository userWordMoreHistoryRepository;
+
     private final GeneratedSentenceRepository generatedSentenceRepository;
     private final ObjectMapper objectMapper;
 
@@ -38,11 +39,12 @@ public class LiteracyService {
     public long checkLiteracy(CheckLiteracyRequest checkLiteracyRequest) {
         log.info("checkLiteracyRequest:{}", checkLiteracyRequest);
 
-        Literacy literacy = checkLiteracyRequest.toEntity();
+        Literacy literacy = checkLiteracyRequest.toLiteracy();
 
         log.info("literacy:{}", literacy);
         literacyRepository.save(literacy);
         long literacyId = literacy.getId();
+        log.info("literacy:{}", literacy);
 
         // if (!aiClient.health()) {
         //     return -1;
@@ -68,9 +70,43 @@ public class LiteracyService {
         // log.debug("{}", forObject);
 
         assert aiCheckLiteracyResponse != null;
-        List<UserWordHistory> entity = aiCheckLiteracyResponse.toEntity(literacyId);
+        List<UserWordHistory> entity = aiCheckLiteracyResponse.toUserWordHistorys(literacyId);
         log.debug("entity:{}", entity);
         userWordHistoryRepository.saveAll(entity);
+
+        return literacyId;
+    }
+
+    public long checkLiteracyMore(CheckLiteracyMoreRequest request) {
+        log.info("request:{}", request);
+
+        LiteracyMore literacyMore = request.toLiteracyMore();
+
+        log.info("literacyMore:{}", literacyMore);
+        literacyMoreRepository.save(literacyMore);
+        long literacyId = literacyMore.getId();
+
+        // ai 호출
+        try {
+            String s = objectMapper.writeValueAsString(request);
+            log.info("request:{}", s);
+        } catch (Exception e) {
+
+        }
+
+        ResponseEntity<AiCheckLiteracyResponse> aiCheckLiteracyResponseResponseEntity = restTemplate.postForEntity("https://dijt3c982f.execute-api.ap-northeast-2.amazonaws.com/default/skt_hack", request, AiCheckLiteracyResponse.class);
+
+        AiCheckLiteracyResponse aiCheckLiteracyResponse = aiCheckLiteracyResponseResponseEntity.getBody();
+
+        log.info("aiCheckLiteracyResponse:{}", aiCheckLiteracyResponse);
+
+        // String forObject = restTemplate.getForObject(AI_URL, String.class);
+        // log.debug("{}", forObject);
+
+        assert aiCheckLiteracyResponse != null;
+        List<UserWordMoreHistory> entity = aiCheckLiteracyResponse.toUserWordMoreHistorys(literacyId);
+        log.debug("entity:{}", entity);
+        userWordMoreHistoryRepository.saveAll(entity);
 
         return literacyId;
     }

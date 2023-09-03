@@ -10,9 +10,9 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @NoArgsConstructor
-public class Literacy extends BaseEntity {
+public class LiteracyMore extends BaseEntity {
 
-    private long paragraphId;
+    private long literacyId;
 
     @Column(length = 1000)
     private String text;

@@ -8,14 +8,14 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 /**
- * 시선 분석의 결과 및 단어와 그 단어가 포함된 원문 저장.
+ * 추가 지문 시선 분석의 결과 및 단어와 그 단어가 포함된 원문 저장.
  */
 @Getter
 @Setter
 @Entity
 @SuperBuilder
 @NoArgsConstructor
-public class UserWordHistory extends BaseEntity {
+public class UserWordMoreHistory extends BaseEntity {
 
     private Long literacyId;
     private Long memberId;
