@@ -14,7 +14,7 @@ public class Literacy extends BaseEntity {
 
     private long paragraphId;
 
-    @Column(length = 1000)
+    @Column(columnDefinition = "TEXT")
     private String text;
     @Column(columnDefinition = "TEXT")
     private String eyes;
