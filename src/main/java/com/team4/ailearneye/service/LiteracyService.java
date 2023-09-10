@@ -114,7 +114,7 @@ public class LiteracyService {
     public GetMoreSentenceResponse getMoreSentence(long literacyId) {
 
         List<UserWordHistory> userWordHistoryList = userWordHistoryRepository.findAllByLiteracyId(literacyId);
-        List<String> words = userWordHistoryList.stream().map(UserWordHistory::getWord).collect(Collectors.toList());
+        List<String> words = userWordHistoryList.stream().map(UserWordHistory::getWord).collect(Collectors.toList()).subList(0, 5);
 
         // AI 지문 생성 요청
         if (words.isEmpty()) {
